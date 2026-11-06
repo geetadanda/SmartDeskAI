@@ -9,7 +9,7 @@ rag_vectorstore/
 chroma_db/
 modules/6_agentic_rag/agent_vectorstore/
 solution_chroma_db/
-
+.DS_Store
 __pycache__/
 *.pyc
 *.pyo
