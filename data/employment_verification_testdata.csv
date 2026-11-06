@@ -1,0 +1,101 @@
+employee_id,account_username,employee_name,department,job_title,employment_type,employment_status,start_date,end_date,is_demo_data,annual_salary_usd
+SD-0001,avery.anderson,Avery Anderson,Executive,Chief Executive Officer,Full-time,Currently employed,2019-01-30,,true,176379
+SD-0002,avery.bennett,Avery Bennett,IT Support,IT Support Manager,Full-time,Currently employed,2019-02-22,,true,92758
+SD-0003,avery.carter,Avery Carter,Human Resources,HR Manager,Full-time,Currently employed,2019-03-17,,true,99137
+SD-0004,avery.diaz,Avery Diaz,Finance,Finance Manager,Full-time,Currently employed,2019-04-09,,true,105516
+SD-0005,avery.ellis,Avery Ellis,Customer Success,Customer Success Manager,Full-time,Currently employed,2019-05-02,,true,88895
+SD-0006,avery.foster,Avery Foster,Sales,Sales Development Representative,Full-time,Currently employed,2019-05-25,,true,93274
+SD-0007,avery.garcia,Avery Garcia,Marketing,Marketing Manager,Full-time,Currently employed,2019-06-17,,true,97653
+SD-0008,avery.hayes,Avery Hayes,Product,Product Manager,Full-time,Currently employed,2019-07-10,,true,129032
+SD-0009,avery.ingram,Avery Ingram,Security,Security Manager,Full-time,Currently employed,2019-08-02,,true,132411
+SD-0010,avery.johnson,Avery Johnson,Operations,Operations Manager,Full-time,Currently employed,2019-08-25,,true,93790
+SD-0011,employee0011,Blake Anderson,Engineering,Engineering Manager,Full-time,Currently employed,2019-09-17,,true,140169
+SD-0012,employee0012,Blake Bennett,IT Support,Service Desk Analyst,Full-time,Currently employed,2019-10-10,,true,106548
+SD-0013,employee0013,Blake Carter,Human Resources,HR Coordinator,Full-time,Currently employed,2019-11-02,,true,112927
+SD-0014,employee0014,Blake Diaz,Finance,Payroll Specialist,Full-time,Currently employed,2019-11-25,,true,101306
+SD-0015,employee0015,Blake Ellis,Customer Success,Support Analyst,Full-time,Currently employed,2019-12-18,,true,84685
+SD-0016,employee0016,Blake Foster,Sales,Account Manager,Full-time,Currently employed,2020-01-10,,true,89064
+SD-0017,employee0017,Blake Garcia,Marketing,Marketing Specialist,Part-time,Currently employed,2020-02-02,,true,93443
+SD-0018,employee0018,Blake Hayes,Product,Product Designer,Full-time,Currently employed,2020-02-25,,true,124822
+SD-0019,employee0019,Blake Ingram,Security,Compliance Specialist,Full-time,Currently employed,2020-03-19,,true,128201
+SD-0020,employee0020,Blake Johnson,Operations,Business Operations Analyst,Full-time,Former employee,2020-04-11,2021-04-11,true,89580
+SD-0021,employee0021,Cameron Anderson,Engineering,Software Engineer,Full-time,Currently employed,2020-05-04,,true,135959
+SD-0022,employee0022,Cameron Bennett,IT Support,Systems Administrator,Full-time,Currently employed,2020-05-27,,true,102338
+SD-0023,employee0023,Cameron Carter,Human Resources,Recruiter,Full-time,Currently employed,2020-06-19,,true,108717
+SD-0024,employee0024,Cameron Diaz,Finance,Finance Manager,Full-time,Currently employed,2020-07-12,,true,115096
+SD-0025,employee0025,Cameron Ellis,Customer Success,Customer Success Manager,Full-time,Currently employed,2020-08-04,,true,98475
+SD-0026,employee0026,Cameron Foster,Sales,Sales Development Representative,Full-time,Currently employed,2020-08-27,,true,102854
+SD-0027,employee0027,Cameron Garcia,Marketing,Marketing Manager,Full-time,Currently employed,2020-09-19,,true,89233
+SD-0028,employee0028,Cameron Hayes,Product,UX Researcher,Full-time,Currently employed,2020-10-12,,true,120612
+SD-0029,employee0029,Cameron Ingram,Security,Security Analyst,Full-time,Currently employed,2020-11-04,,true,123991
+SD-0030,employee0030,Cameron Johnson,Operations,Program Manager,Full-time,Currently employed,2020-11-27,,true,85370
+SD-0031,employee0031,Dakota Anderson,Engineering,Engineering Manager,Full-time,Currently employed,2020-12-20,,true,131749
+SD-0032,employee0032,Dakota Bennett,IT Support,Service Desk Analyst,Full-time,Currently employed,2021-01-12,,true,98128
+SD-0033,employee0033,Dakota Carter,Human Resources,HR Coordinator,Full-time,Currently employed,2021-02-04,,true,104507
+SD-0034,employee0034,Dakota Diaz,Finance,Payroll Specialist,Part-time,Currently employed,2021-02-27,,true,110886
+SD-0035,employee0035,Dakota Ellis,Customer Success,Support Analyst,Full-time,Currently employed,2021-03-22,,true,94265
+SD-0036,employee0036,Dakota Foster,Sales,Account Manager,Full-time,Currently employed,2021-04-14,,true,98644
+SD-0037,employee0037,Dakota Garcia,Marketing,Marketing Specialist,Full-time,Currently employed,2021-05-07,,true,103023
+SD-0038,employee0038,Dakota Hayes,Product,Product Designer,Full-time,Currently employed,2021-05-30,,true,134402
+SD-0039,employee0039,Dakota Ingram,Security,Compliance Specialist,Full-time,Currently employed,2021-06-22,,true,137781
+SD-0040,employee0040,Dakota Johnson,Operations,Business Operations Analyst,Full-time,Former employee,2021-07-15,2022-07-15,true,81160
+SD-0041,employee0041,Elliot Anderson,Engineering,Software Engineer,Full-time,Currently employed,2021-08-07,,true,127539
+SD-0042,employee0042,Elliot Bennett,IT Support,Systems Administrator,Full-time,Currently employed,2021-08-30,,true,93918
+SD-0043,employee0043,Elliot Carter,Human Resources,Recruiter,Full-time,Currently employed,2021-09-22,,true,100297
+SD-0044,employee0044,Elliot Diaz,Finance,Finance Manager,Full-time,Currently employed,2021-10-15,,true,106676
+SD-0045,employee0045,Elliot Ellis,Customer Success,Customer Success Manager,Full-time,Currently employed,2021-11-07,,true,90055
+SD-0046,employee0046,Elliot Foster,Sales,Sales Development Representative,Full-time,Currently employed,2021-11-30,,true,94434
+SD-0047,employee0047,Elliot Garcia,Marketing,Marketing Manager,Full-time,Currently employed,2021-12-23,,true,98813
+SD-0048,employee0048,Elliot Hayes,Product,UX Researcher,Full-time,Currently employed,2022-01-15,,true,130192
+SD-0049,employee0049,Elliot Ingram,Security,Security Analyst,Full-time,Currently employed,2022-02-07,,true,133571
+SD-0050,employee0050,Elliot Johnson,Operations,Program Manager,Full-time,Currently employed,2022-03-02,,true,94950
+SD-0051,employee0051,Finley Anderson,Engineering,Engineering Manager,Part-time,Currently employed,2022-03-25,,true,141329
+SD-0052,employee0052,Finley Bennett,IT Support,Service Desk Analyst,Full-time,Currently employed,2022-04-17,,true,107708
+SD-0053,employee0053,Finley Carter,Human Resources,HR Coordinator,Full-time,Currently employed,2022-05-10,,true,96087
+SD-0054,employee0054,Finley Diaz,Finance,Payroll Specialist,Full-time,Currently employed,2022-06-02,,true,102466
+SD-0055,employee0055,Finley Ellis,Customer Success,Support Analyst,Full-time,Currently employed,2022-06-25,,true,85845
+SD-0056,employee0056,Finley Foster,Sales,Account Manager,Full-time,Currently employed,2022-07-18,,true,90224
+SD-0057,employee0057,Finley Garcia,Marketing,Marketing Specialist,Full-time,Currently employed,2022-08-10,,true,94603
+SD-0058,employee0058,Finley Hayes,Product,Product Designer,Full-time,Currently employed,2022-09-02,,true,125982
+SD-0059,employee0059,Finley Ingram,Security,Compliance Specialist,Full-time,Currently employed,2022-09-25,,true,129361
+SD-0060,employee0060,Finley Johnson,Operations,Business Operations Analyst,Full-time,Former employee,2022-10-18,2023-10-18,true,90740
+SD-0061,employee0061,Harper Anderson,Engineering,Software Engineer,Full-time,Currently employed,2022-11-10,,true,137119
+SD-0062,employee0062,Harper Bennett,IT Support,Systems Administrator,Full-time,Currently employed,2022-12-03,,true,103498
+SD-0063,employee0063,Harper Carter,Human Resources,Recruiter,Full-time,Currently employed,2022-12-26,,true,109877
+SD-0064,employee0064,Harper Diaz,Finance,Finance Manager,Full-time,Currently employed,2023-01-18,,true,116256
+SD-0065,employee0065,Harper Ellis,Customer Success,Customer Success Manager,Full-time,Currently employed,2023-02-10,,true,99635
+SD-0066,employee0066,Harper Foster,Sales,Sales Development Representative,Full-time,Currently employed,2023-03-05,,true,86014
+SD-0067,employee0067,Harper Garcia,Marketing,Marketing Manager,Full-time,Currently employed,2023-03-28,,true,90393
+SD-0068,employee0068,Harper Hayes,Product,UX Researcher,Part-time,Currently employed,2023-04-20,,true,121772
+SD-0069,employee0069,Harper Ingram,Security,Security Analyst,Full-time,Currently employed,2023-05-13,,true,125151
+SD-0070,employee0070,Harper Johnson,Operations,Program Manager,Full-time,Currently employed,2023-06-05,,true,86530
+SD-0071,employee0071,Jordan Anderson,Engineering,Engineering Manager,Full-time,Currently employed,2023-06-28,,true,132909
+SD-0072,employee0072,Jordan Bennett,IT Support,Service Desk Analyst,Full-time,Currently employed,2023-07-21,,true,99288
+SD-0073,employee0073,Jordan Carter,Human Resources,HR Coordinator,Full-time,Currently employed,2023-08-13,,true,105667
+SD-0074,employee0074,Jordan Diaz,Finance,Payroll Specialist,Full-time,Currently employed,2023-09-05,,true,112046
+SD-0075,employee0075,Jordan Ellis,Customer Success,Support Analyst,Full-time,Currently employed,2023-09-28,,true,95425
+SD-0076,employee0076,Jordan Foster,Sales,Account Manager,Full-time,Currently employed,2023-10-21,,true,99804
+SD-0077,employee0077,Jordan Garcia,Marketing,Marketing Specialist,Full-time,Currently employed,2023-11-13,,true,104183
+SD-0078,employee0078,Jordan Hayes,Product,Product Designer,Full-time,Currently employed,2023-12-06,,true,135562
+SD-0079,employee0079,Jordan Ingram,Security,Compliance Specialist,Full-time,Currently employed,2023-12-29,,true,120941
+SD-0080,employee0080,Jordan Johnson,Operations,Business Operations Analyst,Full-time,Former employee,2024-01-21,2025-01-20,true,82320
+SD-0081,employee0081,Morgan Anderson,Engineering,Software Engineer,Full-time,Currently employed,2024-02-13,,true,128699
+SD-0082,employee0082,Morgan Bennett,IT Support,Systems Administrator,Full-time,Currently employed,2024-03-07,,true,95078
+SD-0083,employee0083,Morgan Carter,Human Resources,Recruiter,Full-time,Currently employed,2024-03-30,,true,101457
+SD-0084,employee0084,Morgan Diaz,Finance,Finance Manager,Full-time,Currently employed,2024-04-22,,true,107836
+SD-0085,employee0085,Morgan Ellis,Customer Success,Customer Success Manager,Part-time,Currently employed,2024-05-15,,true,91215
+SD-0086,employee0086,Morgan Foster,Sales,Sales Development Representative,Full-time,Currently employed,2024-06-07,,true,95594
+SD-0087,employee0087,Morgan Garcia,Marketing,Marketing Manager,Full-time,Currently employed,2024-06-30,,true,99973
+SD-0088,employee0088,Morgan Hayes,Product,UX Researcher,Full-time,Currently employed,2024-07-23,,true,131352
+SD-0089,employee0089,Morgan Ingram,Security,Security Analyst,Full-time,Currently employed,2024-08-15,,true,134731
+SD-0090,employee0090,Morgan Johnson,Operations,Program Manager,Full-time,Currently employed,2024-09-07,,true,96110
+SD-0091,employee0091,Riley Anderson,Engineering,Engineering Manager,Full-time,Currently employed,2024-09-30,,true,142489
+SD-0092,employee0092,Riley Bennett,IT Support,Service Desk Analyst,Full-time,Currently employed,2024-10-23,,true,90868
+SD-0093,employee0093,Riley Carter,Human Resources,HR Coordinator,Full-time,Currently employed,2024-11-15,,true,97247
+SD-0094,employee0094,Riley Diaz,Finance,Payroll Specialist,Full-time,Currently employed,2024-12-08,,true,103626
+SD-0095,employee0095,Riley Ellis,Customer Success,Support Analyst,Full-time,Currently employed,2024-12-31,,true,87005
+SD-0096,employee0096,Riley Foster,Sales,Account Manager,Full-time,Currently employed,2025-01-23,,true,91384
+SD-0097,employee0097,Riley Garcia,Marketing,Marketing Specialist,Full-time,Currently employed,2025-02-15,,true,95763
+SD-0098,employee0098,Riley Hayes,Product,Product Designer,Full-time,Currently employed,2025-03-10,,true,127142
+SD-0099,employee0099,Riley Ingram,Security,Compliance Specialist,Full-time,Currently employed,2025-04-02,,true,130521
+SD-0100,employee0100,Riley Johnson,Operations,Business Operations Analyst,Full-time,Former employee,2025-04-25,2026-04-25,true,91900

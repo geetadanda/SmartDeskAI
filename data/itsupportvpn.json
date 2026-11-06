@@ -1,0 +1,77 @@
+[
+  {
+    "question": "How can I set up my VPN?",
+    "answer": "Use the company software portal to install the IT-approved VPN client for your operating system. Open the client, select the company profile, sign in with your company account, and complete MFA. Follow the platform-specific instructions in the VPN Setup Guide. If the profile or client is unavailable, contact the service desk.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "Which VPN client should I install?",
+    "answer": "Install only the client and version listed for your operating system in the company’s approved software portal or the IT-maintained supported-client list. The specific client must be confirmed by IT; do not choose one based on a web search.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "Can I download the VPN client from a search result?",
+    "answer": "No. Use only the company software portal, managed software catalog, or a vendor link verified and published by IT. Avoid third-party download sites and unofficial package repositories.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "How do I install the VPN on Windows?",
+    "answer": "Open the company software portal, find the IT-approved Windows VPN client, and select Install. Open it from the Start menu, choose the company profile, sign in, and complete MFA. If administrator credentials are requested and you do not have authorized access, stop and submit an IT request.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "How do I install the VPN on a Mac?",
+    "answer": "Install the supported macOS client from the company software portal or the verified IT-published link. Open it from Applications, select the company profile, sign in, and complete MFA. Approve system or network-extension prompts only when they identify the expected client and profile; contact IT if a prompt is unfamiliar.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "How do I install the VPN on Linux?",
+    "answer": "First confirm that your Linux distribution and release are supported. Follow the official IT Linux setup instructions and use only the documented managed repository or package source. If your distribution is not listed, contact IT rather than adapting instructions or installing an unofficial client.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "What do I need before connecting?",
+    "answer": "Use an approved device, install current operating-system security updates, connect to a trusted internet connection, and have your company sign-in and enrolled MFA method available. Follow any device-enrollment or endpoint-security requirements provided by IT.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "The VPN says authentication failed. What should I do?",
+    "answer": "Check that you are using your company account and the official sign-in page. If you see an account-lock notice or the error continues, contact the service desk. Do not repeatedly guess passwords or send your password or MFA code to support.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "I am not receiving an MFA prompt. How can I fix it?",
+    "answer": "Check that your enrolled device has connectivity and that you are using the expected company sign-in flow. Do not approve prompts you did not initiate. If the prompt still does not arrive, contact IT to verify or re-enroll your MFA method.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "I got an MFA prompt I did not request. What should I do?",
+    "answer": "Deny the prompt and report it to IT immediately using the security incident reporting channel in the VPN Setup Guide. Do not share any authentication codes. If you suspect your account is compromised, follow IT’s instructions to secure it.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "The VPN connection times out or says the server is unavailable. What should I try?",
+    "answer": "Check that your internet connection works, verify that you selected the company profile, and retry once after a short wait. If it still fails, contact IT with the exact error, date and time, time zone, operating system, client version, and network type. Do not guess or change the VPN gateway.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "The VPN says connected, but I cannot reach a company resource. What should I do?",
+    "answer": "Confirm that the resource is one you are authorized to access. If appropriate, disconnect and reconnect once, following IT instructions. If the problem continues, report the resource name, when the issue occurred, and whether other company services are available. Do not change DNS, firewall, or routing settings.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "How should I resolve common VPN errors?",
+    "answer": "Start with safe checks: confirm internet access, select the correct company profile, verify you installed the approved client, and retry once where appropriate. For sign-in or MFA errors, use the official company sign-in flow and contact IT if access remains blocked. Stop and contact IT for certificate or trust warnings, unfamiliar prompts, missing profiles, or administrator-rights requests. Never disable endpoint protection, bypass a security warning, or change firewall, DNS, or routing settings to force a connection.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "The VPN client shows a certificate or trust warning. Can I continue?",
+    "answer": "No. Stop and do not bypass the warning, install an unknown certificate, or accept an unexpected profile. Contact IT and provide the exact warning or a screenshot after removing personal or confidential information.",
+    "category": "IT Support - VPN Configuration"
+  },
+  {
+    "question": "What information should I send IT when I report a VPN problem?",
+    "answer": "Include your name and callback method, operating system and version, VPN client and version, the date and time with time zone, exact error text, network type, and steps already tried. Do not include passwords, MFA or recovery codes, private keys, full configuration files, or unrelated sensitive information.",
+    "category": "IT Support - VPN Configuration"
+  }
+]

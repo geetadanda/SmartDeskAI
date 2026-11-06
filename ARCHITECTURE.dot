@@ -1,0 +1,73 @@
+digraph SmartHRHighLevelDesign {
+  graph [
+    rankdir="LR",
+    bgcolor="#FFFFFF",
+    pad="0.35",
+    nodesep="0.55",
+    ranksep="0.8",
+    splines="polyline",
+    fontname="Helvetica",
+    fontsize="22",
+    labelloc="t",
+    label="SmartHR Support — High-Level Design"
+  ];
+  node [
+    shape="box",
+    style="rounded,filled",
+    fontname="Helvetica",
+    fontsize="11",
+    color="#64748B",
+    fillcolor="#F8FAFC",
+    fontcolor="#0F172A",
+    margin="0.20,0.14"
+  ];
+  edge [
+    color="#64748B",
+    fontname="Helvetica",
+    fontsize="9",
+    arrowsize="0.8"
+  ];
+
+  users [label="Employees and administrators", shape="oval", fillcolor="#DBEAFE"];
+
+  subgraph cluster_application {
+    label="SmartHR Application";
+    color="#93C5FD";
+    style="rounded";
+    bgcolor="#EFF6FF";
+
+    ui [label="Web user interface\nSupport chat · Jira · Directory\nHoliday calendar · User administration", fillcolor="#BFDBFE"];
+    services [label="Application services\nAuthentication · Chat orchestration\nKnowledge retrieval · Jira workflows", fillcolor="#DBEAFE"];
+    users -> ui [label="browser"];
+    ui -> services [label="user requests"];
+    services -> ui [label="responses"];
+  }
+
+  subgraph cluster_data {
+    label="Application Data";
+    color="#86EFAC";
+    style="rounded";
+    bgcolor="#F0FDF4";
+
+    knowledge [label="HR and IT knowledge\nJSON / JSONL source files"];
+    reference [label="Company directory and holidays\nCSV reference data"];
+    accounts [label="User accounts and login state\nSQLite database"];
+    knowledge -> services [label="knowledge content"];
+    reference -> services [label="directory / calendar data"];
+    services -> accounts [label="account and session checks"];
+  }
+
+  subgraph cluster_external {
+    label="External Services";
+    color="#FCD34D";
+    style="rounded";
+    bgcolor="#FFFBEB";
+
+    ai [label="OpenAI\nChat and language model services", fillcolor="#FEF3C7"];
+    jira [label="Jira Cloud\nIssue creation and status", fillcolor="#FFE4E6"];
+    services -> ai [label="chat / retrieval support"];
+    ai -> services [label="generated response"];
+    services -> jira [label="issue requests"];
+    jira -> services [label="issue details / status"];
+  }
+}

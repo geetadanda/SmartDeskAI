@@ -1,0 +1,77 @@
+[
+  {
+    "question": "How many casual leave days do I get?",
+    "answer": "You receive 12 paid casual-leave days per calendar year. The entitlement is prorated if you join during the year or work a reduced schedule.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How many sick leave days do I get?",
+    "answer": "You receive 8 paid sick-leave days per calendar year, prorated for a partial year or reduced schedule. If applicable law provides a greater entitlement, the legal requirement applies.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How much earned leave do I receive?",
+    "answer": "You accrue 15 paid earned-leave days per calendar year—equivalent to 1.25 days per month for a full-time employee. The amount is prorated for a partial year or reduced schedule.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Can I carry forward unused casual leave?",
+    "answer": "Unused casual leave does not carry forward to the next calendar year, except where applicable law requires otherwise.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Can I carry forward unused sick leave and encash it?",
+    "answer": "Under the policy, sick leave does not carry forward and is not paid out at year-end or separation, except where applicable law requires otherwise.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Can I carry forward earned leave?",
+    "answer": "Yes. Unused accrued earned leave carries forward from year to year. Accrual may pause when your balance reaches 30 days and resume when it falls below 30 days, subject to applicable law.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Can I encash my earned leave?",
+    "answer": "Accrued, unused earned leave is paid out when your employment ends, at your final rate of pay as required by California law. It is not otherwise encashed during employment unless the company establishes a legally compliant program.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How much maternity leave does the company provide, and is it paid?",
+    "answer": "An employee who gives birth may take up to 26 weeks of fully paid company maternity leave for pregnancy, childbirth, recovery, and bonding. The company benefit pays regular base pay during approved leave; separate statutory rights and benefits are administered under applicable law.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How much paternity or parental bonding leave can I take?",
+    "answer": "An eligible employee who becomes a parent and is not taking the maternity benefit may take up to 2 weeks of fully paid company paternity or parental bonding leave. It may be used for a birth, adoption, or foster placement and should normally be taken within 12 months of the event.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Do I need to use my earned leave to receive maternity leave?",
+    "answer": "No. The policy says employees are not required to use accrued PTO to fund the fully paid company maternity leave benefit.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How far in advance should I request casual or earned leave?",
+    "answer": "Request planned casual leave normally at least 3 business days in advance. Request earned leave normally at least 5 business days in advance, and submit longer absences as early as practicable.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "What should I do if I need sick leave unexpectedly?",
+    "answer": "Notify your manager as soon as practicable, then record the leave in the designated system when you are able. For foreseeable medical appointments, provide advance notice when possible.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Do I need to tell my manager my medical diagnosis when using sick leave?",
+    "answer": "No. The policy says employees do not need to disclose a diagnosis to their manager. HR may request documentation only when permitted by law and reasonably necessary to administer the leave.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "How does comp off work, and when do I need to use it?",
+    "answer": "Compensatory time off may be approved for qualifying additional work, with manager approval and recorded hours. It should generally be used within 60 calendar days of being earned and does not carry forward beyond that period or get encashed, except where required by law.",
+    "category": "HR Policies - Leave Policy"
+  },
+  {
+    "question": "Does comp off replace overtime pay?",
+    "answer": "No. Comp off does not replace or reduce wages or overtime pay owed under applicable law. Non-exempt employees must record all hours worked and receive legally required compensation.",
+    "category": "HR Policies - Leave Policy"
+  }
+]

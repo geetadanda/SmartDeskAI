@@ -1,0 +1,74 @@
+digraph SmartHRHybridRAG {
+  graph [
+    rankdir="LR",
+    bgcolor="#FFFFFF",
+    pad="0.35",
+    nodesep="0.48",
+    ranksep="0.72",
+    splines="polyline",
+    fontname="Helvetica",
+    fontsize="22",
+    labelloc="t",
+    label="SmartHR Support — Hybrid RAG"
+  ];
+  node [
+    shape="box",
+    style="rounded,filled",
+    fontname="Helvetica",
+    fontsize="10",
+    color="#64748B",
+    fillcolor="#F8FAFC",
+    fontcolor="#0F172A",
+    margin="0.18,0.12"
+  ];
+  edge [
+    color="#64748B",
+    fontname="Helvetica",
+    fontsize="9",
+    arrowsize="0.75"
+  ];
+
+  query [label="Employee question", shape="oval", fillcolor="#DBEAFE"];
+  exact [label="Exact-question lookup\nNormalized text comparison", fillcolor="#E0F2FE"];
+  exact_answer [label="Return exact source answer", fillcolor="#DCFCE7"];
+  split [label="No exact match", shape="diamond", fillcolor="#FEF3C7"];
+
+  subgraph cluster_indexing {
+    label="Index build (first chat request)";
+    color="#86EFAC";
+    style="rounded";
+    bgcolor="#F0FDF4";
+
+    source [label="JSON / JSONL files\nHelpdesk tickets · HR policies\nIT support FAQs", shape="folder", fillcolor="#DCFCE7"];
+    normalize [label="Normalize records\nquestion/subject + answer/description\nretain ID, category, source metadata"];
+    chunk [label="TokenTextSplitter\n2,048 tokens · 50 overlap"];
+    embeddings [label="OpenAI embeddings\ntext-embedding-3-small", fillcolor="#FEF3C7"];
+    vector_store [label="VectorStoreIndex\nsemantic index", fillcolor="#DBEAFE"];
+    keyword_store [label="SimpleKeywordTableIndex\nkeyword index", fillcolor="#EDE9FE"];
+
+    source -> normalize -> chunk;
+    chunk -> vector_store;
+    chunk -> keyword_store;
+    embeddings -> vector_store [label="embed document nodes"];
+  }
+
+  vector_retrieval [label="Semantic retrieval\nTop 5 candidates", fillcolor="#DBEAFE"];
+  keyword_retrieval [label="Keyword retrieval\nTop 5 candidates", fillcolor="#EDE9FE"];
+  rrf [label="Reciprocal-rank fusion\nscore = Σ 1 / (60 + rank)\nDeduplicate by record ID", fillcolor="#FEF3C7"];
+  top_results [label="Select top 3\nranked records with source"];
+  agent [label="Support chat agent\nOpenAI chat model", fillcolor="#BFDBFE"];
+  response [label="Grounded answer\nwith source / ticket reference", fillcolor="#DCFCE7"];
+  fallback [label="If evidence is insufficient:\nstate that there is not enough information", fillcolor="#FEE2E2"];
+
+  query -> exact;
+  exact -> exact_answer [label="match"];
+  exact -> split [label="no match"];
+  split -> vector_retrieval;
+  split -> keyword_retrieval;
+  vector_store -> vector_retrieval [label="query embedding"];
+  keyword_store -> keyword_retrieval [label="query terms"];
+  vector_retrieval -> rrf;
+  keyword_retrieval -> rrf;
+  rrf -> top_results -> agent -> response;
+  agent -> fallback [label="no reliable evidence"];
+}

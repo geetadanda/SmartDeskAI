@@ -1,4 +1,5 @@
 .env
+data/smarthr_auth.sqlite3*
 .venv/
 .claude/
 pdf_images/

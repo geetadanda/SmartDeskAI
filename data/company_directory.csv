@@ -1,0 +1,101 @@
+employee_id,name,department,job_title,email,phone_number,manager_id
+SD-0001,Avery Anderson,Executive,Chief Executive Officer,employee0001@example.com,+1-202-555-0100,
+SD-0002,Avery Bennett,IT Support,IT Support Manager,employee0002@example.com,+1-202-555-0101,SD-0001
+SD-0003,Avery Carter,Human Resources,HR Manager,employee0003@example.com,+1-202-555-0102,SD-0001
+SD-0004,Avery Diaz,Finance,Finance Manager,employee0004@example.com,+1-202-555-0103,SD-0001
+SD-0005,Avery Ellis,Customer Success,Customer Success Manager,employee0005@example.com,+1-202-555-0104,SD-0001
+SD-0006,Avery Foster,Sales,Sales Development Representative,employee0006@example.com,+1-202-555-0105,SD-0016
+SD-0007,Avery Garcia,Marketing,Marketing Manager,employee0007@example.com,+1-202-555-0106,SD-0001
+SD-0008,Avery Hayes,Product,Product Manager,employee0008@example.com,+1-202-555-0107,SD-0001
+SD-0009,Avery Ingram,Security,Security Manager,employee0009@example.com,+1-202-555-0108,SD-0001
+SD-0010,Avery Johnson,Operations,Operations Manager,employee0010@example.com,+1-202-555-0109,SD-0001
+SD-0011,Blake Anderson,Engineering,Engineering Manager,employee0011@example.com,+1-202-555-0110,SD-0001
+SD-0012,Blake Bennett,IT Support,Service Desk Analyst,employee0012@example.com,+1-202-555-0111,SD-0002
+SD-0013,Blake Carter,Human Resources,HR Coordinator,employee0013@example.com,+1-202-555-0112,SD-0003
+SD-0014,Blake Diaz,Finance,Payroll Specialist,employee0014@example.com,+1-202-555-0113,SD-0004
+SD-0015,Blake Ellis,Customer Success,Support Analyst,employee0015@example.com,+1-202-555-0114,SD-0005
+SD-0016,Blake Foster,Sales,Account Manager,employee0016@example.com,+1-202-555-0115,SD-0001
+SD-0017,Blake Garcia,Marketing,Marketing Specialist,employee0017@example.com,+1-202-555-0116,SD-0007
+SD-0018,Blake Hayes,Product,Product Designer,employee0018@example.com,+1-202-555-0117,SD-0008
+SD-0019,Blake Ingram,Security,Compliance Specialist,employee0019@example.com,+1-202-555-0118,SD-0009
+SD-0020,Blake Johnson,Operations,Business Operations Analyst,employee0020@example.com,+1-202-555-0119,SD-0010
+SD-0021,Cameron Anderson,Engineering,Software Engineer,employee0021@example.com,+1-202-555-0120,SD-0011
+SD-0022,Cameron Bennett,IT Support,Systems Administrator,employee0022@example.com,+1-202-555-0121,SD-0002
+SD-0023,Cameron Carter,Human Resources,Recruiter,employee0023@example.com,+1-202-555-0122,SD-0003
+SD-0024,Cameron Diaz,Finance,Finance Manager,employee0024@example.com,+1-202-555-0123,SD-0004
+SD-0025,Cameron Ellis,Customer Success,Customer Success Manager,employee0025@example.com,+1-202-555-0124,SD-0005
+SD-0026,Cameron Foster,Sales,Sales Development Representative,employee0026@example.com,+1-202-555-0125,SD-0016
+SD-0027,Cameron Garcia,Marketing,Marketing Manager,employee0027@example.com,+1-202-555-0126,SD-0007
+SD-0028,Cameron Hayes,Product,UX Researcher,employee0028@example.com,+1-202-555-0127,SD-0008
+SD-0029,Cameron Ingram,Security,Security Analyst,employee0029@example.com,+1-202-555-0128,SD-0009
+SD-0030,Cameron Johnson,Operations,Program Manager,employee0030@example.com,+1-202-555-0129,SD-0010
+SD-0031,Dakota Anderson,Engineering,Engineering Manager,employee0031@example.com,+1-202-555-0130,SD-0011
+SD-0032,Dakota Bennett,IT Support,Service Desk Analyst,employee0032@example.com,+1-202-555-0131,SD-0002
+SD-0033,Dakota Carter,Human Resources,HR Coordinator,employee0033@example.com,+1-202-555-0132,SD-0003
+SD-0034,Dakota Diaz,Finance,Payroll Specialist,employee0034@example.com,+1-202-555-0133,SD-0004
+SD-0035,Dakota Ellis,Customer Success,Support Analyst,employee0035@example.com,+1-202-555-0134,SD-0005
+SD-0036,Dakota Foster,Sales,Account Manager,employee0036@example.com,+1-202-555-0135,SD-0016
+SD-0037,Dakota Garcia,Marketing,Marketing Specialist,employee0037@example.com,+1-202-555-0136,SD-0007
+SD-0038,Dakota Hayes,Product,Product Designer,employee0038@example.com,+1-202-555-0137,SD-0008
+SD-0039,Dakota Ingram,Security,Compliance Specialist,employee0039@example.com,+1-202-555-0138,SD-0009
+SD-0040,Dakota Johnson,Operations,Business Operations Analyst,employee0040@example.com,+1-202-555-0139,SD-0010
+SD-0041,Elliot Anderson,Engineering,Software Engineer,employee0041@example.com,+1-202-555-0140,SD-0011
+SD-0042,Elliot Bennett,IT Support,Systems Administrator,employee0042@example.com,+1-202-555-0141,SD-0002
+SD-0043,Elliot Carter,Human Resources,Recruiter,employee0043@example.com,+1-202-555-0142,SD-0003
+SD-0044,Elliot Diaz,Finance,Finance Manager,employee0044@example.com,+1-202-555-0143,SD-0004
+SD-0045,Elliot Ellis,Customer Success,Customer Success Manager,employee0045@example.com,+1-202-555-0144,SD-0005
+SD-0046,Elliot Foster,Sales,Sales Development Representative,employee0046@example.com,+1-202-555-0145,SD-0016
+SD-0047,Elliot Garcia,Marketing,Marketing Manager,employee0047@example.com,+1-202-555-0146,SD-0007
+SD-0048,Elliot Hayes,Product,UX Researcher,employee0048@example.com,+1-202-555-0147,SD-0008
+SD-0049,Elliot Ingram,Security,Security Analyst,employee0049@example.com,+1-202-555-0148,SD-0009
+SD-0050,Elliot Johnson,Operations,Program Manager,employee0050@example.com,+1-202-555-0149,SD-0010
+SD-0051,Finley Anderson,Engineering,Engineering Manager,employee0051@example.com,+1-202-555-0150,SD-0011
+SD-0052,Finley Bennett,IT Support,Service Desk Analyst,employee0052@example.com,+1-202-555-0151,SD-0002
+SD-0053,Finley Carter,Human Resources,HR Coordinator,employee0053@example.com,+1-202-555-0152,SD-0003
+SD-0054,Finley Diaz,Finance,Payroll Specialist,employee0054@example.com,+1-202-555-0153,SD-0004
+SD-0055,Finley Ellis,Customer Success,Support Analyst,employee0055@example.com,+1-202-555-0154,SD-0005
+SD-0056,Finley Foster,Sales,Account Manager,employee0056@example.com,+1-202-555-0155,SD-0016
+SD-0057,Finley Garcia,Marketing,Marketing Specialist,employee0057@example.com,+1-202-555-0156,SD-0007
+SD-0058,Finley Hayes,Product,Product Designer,employee0058@example.com,+1-202-555-0157,SD-0008
+SD-0059,Finley Ingram,Security,Compliance Specialist,employee0059@example.com,+1-202-555-0158,SD-0009
+SD-0060,Finley Johnson,Operations,Business Operations Analyst,employee0060@example.com,+1-202-555-0159,SD-0010
+SD-0061,Harper Anderson,Engineering,Software Engineer,employee0061@example.com,+1-202-555-0160,SD-0011
+SD-0062,Harper Bennett,IT Support,Systems Administrator,employee0062@example.com,+1-202-555-0161,SD-0002
+SD-0063,Harper Carter,Human Resources,Recruiter,employee0063@example.com,+1-202-555-0162,SD-0003
+SD-0064,Harper Diaz,Finance,Finance Manager,employee0064@example.com,+1-202-555-0163,SD-0004
+SD-0065,Harper Ellis,Customer Success,Customer Success Manager,employee0065@example.com,+1-202-555-0164,SD-0005
+SD-0066,Harper Foster,Sales,Sales Development Representative,employee0066@example.com,+1-202-555-0165,SD-0016
+SD-0067,Harper Garcia,Marketing,Marketing Manager,employee0067@example.com,+1-202-555-0166,SD-0007
+SD-0068,Harper Hayes,Product,UX Researcher,employee0068@example.com,+1-202-555-0167,SD-0008
+SD-0069,Harper Ingram,Security,Security Analyst,employee0069@example.com,+1-202-555-0168,SD-0009
+SD-0070,Harper Johnson,Operations,Program Manager,employee0070@example.com,+1-202-555-0169,SD-0010
+SD-0071,Jordan Anderson,Engineering,Engineering Manager,employee0071@example.com,+1-202-555-0170,SD-0011
+SD-0072,Jordan Bennett,IT Support,Service Desk Analyst,employee0072@example.com,+1-202-555-0171,SD-0002
+SD-0073,Jordan Carter,Human Resources,HR Coordinator,employee0073@example.com,+1-202-555-0172,SD-0003
+SD-0074,Jordan Diaz,Finance,Payroll Specialist,employee0074@example.com,+1-202-555-0173,SD-0004
+SD-0075,Jordan Ellis,Customer Success,Support Analyst,employee0075@example.com,+1-202-555-0174,SD-0005
+SD-0076,Jordan Foster,Sales,Account Manager,employee0076@example.com,+1-202-555-0175,SD-0016
+SD-0077,Jordan Garcia,Marketing,Marketing Specialist,employee0077@example.com,+1-202-555-0176,SD-0007
+SD-0078,Jordan Hayes,Product,Product Designer,employee0078@example.com,+1-202-555-0177,SD-0008
+SD-0079,Jordan Ingram,Security,Compliance Specialist,employee0079@example.com,+1-202-555-0178,SD-0009
+SD-0080,Jordan Johnson,Operations,Business Operations Analyst,employee0080@example.com,+1-202-555-0179,SD-0010
+SD-0081,Morgan Anderson,Engineering,Software Engineer,employee0081@example.com,+1-202-555-0180,SD-0011
+SD-0082,Morgan Bennett,IT Support,Systems Administrator,employee0082@example.com,+1-202-555-0181,SD-0002
+SD-0083,Morgan Carter,Human Resources,Recruiter,employee0083@example.com,+1-202-555-0182,SD-0003
+SD-0084,Morgan Diaz,Finance,Finance Manager,employee0084@example.com,+1-202-555-0183,SD-0004
+SD-0085,Morgan Ellis,Customer Success,Customer Success Manager,employee0085@example.com,+1-202-555-0184,SD-0005
+SD-0086,Morgan Foster,Sales,Sales Development Representative,employee0086@example.com,+1-202-555-0185,SD-0016
+SD-0087,Morgan Garcia,Marketing,Marketing Manager,employee0087@example.com,+1-202-555-0186,SD-0007
+SD-0088,Morgan Hayes,Product,UX Researcher,employee0088@example.com,+1-202-555-0187,SD-0008
+SD-0089,Morgan Ingram,Security,Security Analyst,employee0089@example.com,+1-202-555-0188,SD-0009
+SD-0090,Morgan Johnson,Operations,Program Manager,employee0090@example.com,+1-202-555-0189,SD-0010
+SD-0091,Riley Anderson,Engineering,Engineering Manager,employee0091@example.com,+1-202-555-0190,SD-0011
+SD-0092,Riley Bennett,IT Support,Service Desk Analyst,employee0092@example.com,+1-202-555-0191,SD-0002
+SD-0093,Riley Carter,Human Resources,HR Coordinator,employee0093@example.com,+1-202-555-0192,SD-0003
+SD-0094,Riley Diaz,Finance,Payroll Specialist,employee0094@example.com,+1-202-555-0193,SD-0004
+SD-0095,Riley Ellis,Customer Success,Support Analyst,employee0095@example.com,+1-202-555-0194,SD-0005
+SD-0096,Riley Foster,Sales,Account Manager,employee0096@example.com,+1-202-555-0195,SD-0016
+SD-0097,Riley Garcia,Marketing,Marketing Specialist,employee0097@example.com,+1-202-555-0196,SD-0007
+SD-0098,Riley Hayes,Product,Product Designer,employee0098@example.com,+1-202-555-0197,SD-0008
+SD-0099,Riley Ingram,Security,Compliance Specialist,employee0099@example.com,+1-202-555-0198,SD-0009
+SD-0100,Riley Johnson,Operations,Business Operations Analyst,employee0100@example.com,+1-202-555-0199,SD-0010
