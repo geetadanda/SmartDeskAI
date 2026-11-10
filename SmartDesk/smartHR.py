@@ -1,8 +1,11 @@
 
+import calendar
+import csv
 import json
 import os
 import re
 import base64
+from datetime import date
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlsplit
@@ -272,6 +275,68 @@ def query_jira_issues_tool(tool_input: str) -> str:
         return json.dumps({"status": "error", "message": str(exc)})
 
 
+DIRECTORY_STOPWORDS = {
+    "a", "an", "at", "contact", "department", "email", "employee", "employees",
+    "find", "for", "from", "in", "is", "number", "of", "on", "phone", "team",
+    "the", "who", "works",
+}
+HOLIDAY_STOPWORDS = {
+    "all", "calendar", "company", "date", "day", "federal", "holiday", "holidays",
+    "in", "is", "list", "next", "observed", "of", "on", "remaining", "show", "the",
+    "upcoming", "us", "what", "when",
+}
+HOLIDAY_CALENDAR_NOTE = (
+    "This is a reference calendar of U.S. federal holidays with weekday observance "
+    "dates for California, not a company-specific paid-holiday schedule."
+)
+
+
+def _load_csv_rows(path: Path) -> list[dict[str, str]]:
+    """Read a CSV file, returning no rows when the file is absent."""
+    try:
+        with path.open(encoding="utf-8", newline="") as file:
+            return list(csv.DictReader(file))
+    except FileNotFoundError:
+        return []
+
+
+def _load_policy_sections(policy_dir: Path) -> list[dict[str, str]]:
+    """Split Markdown policy files into one knowledge record per headed section."""
+    records = []
+    for path in sorted(policy_dir.glob("*.md")):
+        headings: list[str] = []
+        sections: list[tuple[list[str], list[str]]] = [([], [])]
+        for line in path.read_text(encoding="utf-8").splitlines():
+            match = re.match(r"(#{1,6})\s+(.+)", line)
+            if match:
+                headings = headings[:len(match[1]) - 1] + [match[2].strip()]
+                sections.append((headings, []))
+            else:
+                sections[-1][1].append(line)
+
+        for number, (section_headings, lines) in enumerate(sections, start=1):
+            body = "\n".join(lines).strip()
+            if not body:
+                continue
+            records.append({
+                "id": f"{path.stem}:{number}",
+                "subject": " > ".join(section_headings) or path.stem,
+                "description": body,
+                "priority": "",
+                "category": section_headings[0] if section_headings else path.stem,
+                "createdAt": "",
+                "requesterEmail": "",
+                "source": path.name,
+                "record_type": "policy",
+            })
+    return records
+
+
+def _word_prefix_match(term: str, text: str) -> bool:
+    """Return whether a term starts a word, so 'it' matches 'IT' but not 'Smith'."""
+    return re.search(rf"(?<!\w){re.escape(term)}", text) is not None
+
+
 class SupportTicketToolsEnhanced:
     """Enhanced tools with better error handling and small-patch extensions."""
     
@@ -380,6 +445,12 @@ class SupportTicketToolsEnhanced:
                 if is_ticket:
                     self.tickets.append(normalized_record)
         
+        data_dir = source_path if source_path.is_dir() else PROJECT_ROOT / "data"
+        if source_path.is_dir():
+            self.knowledge_records.extend(_load_policy_sections(data_dir / "policies"))
+        self.directory = _load_csv_rows(data_dir / "company_directory.csv")
+        self.holidays = _load_csv_rows(data_dir / "holiday_calendar.csv")
+
         self.embeddings = OpenAIEmbeddings(model='text-embedding-3-small')
         self._setup_vectorstore()
     
@@ -468,9 +539,23 @@ class SupportTicketToolsEnhanced:
             num_chunks_per_query=5
         ).retrieve(query)
 
-        # Reciprocal-rank fusion combines semantic and exact-keyword matches.
+        results = self._fuse_rankings((vector_results, keyword_results))
+        if not results:
+            return "No similar tickets found."
+        
+        output = "Found related knowledge-base records:\n\n"
+        for i, entry in enumerate(results, 1):
+            result = entry["result"]
+            source = result.metadata.get("source", "Unknown source")
+            output += f"--- Result {i} (Source: {source}) ---\n{result.text}\n\n"
+        
+        return output
+
+    @staticmethod
+    def _fuse_rankings(ranked_lists, limit: int = 3) -> list[dict]:
+        """Combine semantic and exact-keyword rankings with reciprocal-rank fusion."""
         fused_results = {}
-        for ranked_results in (vector_results, keyword_results):
+        for ranked_results in ranked_lists:
             seen_ticket_ids = set()
             for rank, result in enumerate(ranked_results, start=1):
                 ticket_id = result.metadata.get("id", result.node_id)
@@ -483,21 +568,158 @@ class SupportTicketToolsEnhanced:
                 )
                 entry["score"] += 1 / (60 + rank)
 
-        results = sorted(
+        return sorted(
             fused_results.values(),
             key=lambda entry: entry["score"],
             reverse=True,
-        )[:3]
+        )[:limit]
+
+    def search_policies(self, query: str) -> str:
+        """Search only the company policy documents, so tickets cannot crowd them out."""
+        if not query or not query.strip():
+            return "Error: Please provide a search query."
+
+        vector_results = self.vector_index.as_retriever(
+            similarity_top_k=5,
+            filters=MetadataFilters(
+                filters=[ExactMatchFilter(key="record_type", value="policy")]
+            ),
+        ).retrieve(query)
+        keyword_results = [
+            result
+            for result in self.keyword_index.as_retriever(
+                num_chunks_per_query=50
+            ).retrieve(query)
+            if result.metadata.get("record_type") == "policy"
+        ]
+        results = self._fuse_rankings((vector_results, keyword_results), limit=4)
         if not results:
-            return "No similar tickets found."
-        
-        output = "Found related knowledge-base records:\n\n"
+            return "No matching policy sections found."
+
+        output = "Found company policy sections:\n\n"
         for i, entry in enumerate(results, 1):
             result = entry["result"]
-            source = result.metadata.get("source", "Unknown source")
-            output += f"--- Result {i} (Source: {source}) ---\n{result.text}\n\n"
-        
+            output += (
+                f"--- Result {i} (Source: {result.metadata.get('source')}, "
+                f"Section: {result.metadata.get('subject')}) ---\n{result.text}\n\n"
+            )
         return output
+
+    def search_company_directory(self, query: str) -> str:
+        """Find employees by name, ID, department, job title, email, or phone."""
+        if not self.directory:
+            return "The company directory is not available."
+
+        terms = [
+            term.strip(".,?!'\"")
+            for term in re.findall(r"[\w@.+'-]+", (query or "").casefold())
+            if term.strip(".,?!'\"") not in DIRECTORY_STOPWORDS
+        ]
+        if not terms:
+            return "Please provide a name, employee ID, department, or job title."
+
+        def searchable(employee: dict[str, str]) -> str:
+            return " ".join(
+                value for key, value in employee.items() if key != "manager_id"
+            ).casefold()
+
+        matches = [
+            employee for employee in self.directory
+            if all(_word_prefix_match(term, searchable(employee)) for term in terms)
+        ]
+        if not matches:
+            return f"No directory entries found for: {query}"
+
+        names_by_id = {e["employee_id"]: e["name"] for e in self.directory}
+        output = [f"Found {len(matches)} directory entries (fictional sample data):"]
+        for employee in matches[:15]:
+            manager_id = employee["manager_id"]
+            manager = (
+                f"{names_by_id.get(manager_id, 'Unknown')} ({manager_id})"
+                if manager_id else "None (top-level)"
+            )
+            output.append(
+                f"- {employee['name']} ({employee['employee_id']}) | "
+                f"{employee['department']} | {employee['job_title']} | "
+                f"{employee['email']} | {employee['phone_number']} | "
+                f"Manager: {manager}"
+            )
+        if len(matches) > 15:
+            output.append(f"...and {len(matches) - 15} more. Ask for a narrower search.")
+        if len(matches) == 1:
+            reports = [
+                f"{e['name']} ({e['employee_id']})" for e in self.directory
+                if e["manager_id"] == matches[0]["employee_id"]
+            ]
+            output.append("Direct reports: " + (", ".join(reports) or "None"))
+        return "\n".join(output)
+
+    def search_holiday_calendar(self, query: str) -> str:
+        """Look up holidays by name, year, or month, or find upcoming holidays."""
+        if not self.holidays:
+            return "The holiday calendar is not available."
+
+        today = date.today()
+        text = (query or "").casefold()
+        years = {int(year) for year in re.findall(r"\b20\d{2}\b", text)}
+        if "this year" in text:
+            years.add(today.year)
+        if "next year" in text:
+            years.add(today.year + 1)
+        text = text.replace("this year", " ").replace("next year", " ")
+
+        month_names = {
+            name.casefold(): number
+            for number, name in enumerate(calendar.month_name) if name
+        }
+        words = re.findall(r"[a-z]+", text)
+        months = {month_names[word] for word in words if word in month_names}
+        name_terms = [
+            word for word in words
+            if word not in month_names and word not in HOLIDAY_STOPWORDS
+        ]
+        upcoming = bool(re.search(r"\b(next|upcoming|remaining)\b", text))
+
+        rows = sorted(
+            (
+                {**row, "_observed": date.fromisoformat(row["observed_date"])}
+                for row in self.holidays
+            ),
+            key=lambda row: row["_observed"],
+        )
+        if not (years or months or name_terms or upcoming):
+            years = {today.year}
+        if years:
+            rows = [r for r in rows if r["_observed"].year in years]
+        if months:
+            rows = [r for r in rows if r["_observed"].month in months]
+        if upcoming:
+            rows = [r for r in rows if r["_observed"] >= today]
+
+        note = ""
+        if name_terms:
+            named = [
+                row for row in rows
+                if all(
+                    _word_prefix_match(term, row["holiday"].casefold())
+                    for term in name_terms
+                )
+            ]
+            if named:
+                rows = named
+            else:
+                note = "No holiday name matched exactly; showing the available dates.\n"
+        elif upcoming and not re.search(r"\b(all|remaining)\b", text):
+            rows = rows[:3]
+
+        header = f"Today is {today:%A, %Y-%m-%d}. {HOLIDAY_CALENDAR_NOTE}\n{note}"
+        if not rows:
+            return header + "No matching holidays found in the calendar."
+        return header + "\n".join(
+            f"- {row['holiday']}: {date.fromisoformat(row['date']):%A, %Y-%m-%d}; "
+            f"observed {row['_observed']:%A, %Y-%m-%d}"
+            for row in rows
+        )
 
     def search_ticket_by_id(self, query: str) -> str:
         """Retrieve one local helpdesk ticket by its exact ID from the vector index."""
@@ -710,6 +932,30 @@ class SupportTicketToolsEnhanced:
         """Get all tools with improved descriptions."""
         return [
             Tool(
+                name="SearchCompanyPolicies",
+                func=self.search_policies,
+                description="""Search the official company policy documents: HR, leave, payroll and
+compensation, onboarding, IT support, and VPN setup.
+Use FIRST for any question about company rules, entitlements, or procedures.
+Input: The user's question."""
+            ),
+            Tool(
+                name="SearchCompanyDirectory",
+                func=self.search_company_directory,
+                description="""Look up employees in the company directory, including email, phone,
+department, job title, manager, and direct reports.
+Use for questions like "who is X", "who manages X", or "who works in IT Support".
+Input: Only a name, employee ID, department, job title, email, or phone number."""
+            ),
+            Tool(
+                name="SearchHolidayCalendar",
+                func=self.search_holiday_calendar,
+                description="""Look up dates in the holiday calendar and find upcoming holidays.
+Use for questions like "when is Labor Day" or "what is the next holiday".
+Input: A holiday name, year, or month, or "next holiday", "upcoming holidays",
+or "all holidays 2027"."""
+            ),
+            Tool(
                 name="SearchSimilarTickets",
                 func=self.search_similar_tickets,
                 description="""Search the combined SmartHR knowledge base, including helpdesk tickets,
@@ -849,7 +1095,7 @@ def get_ticket_form_options() -> dict[str, list[str]]:
 # ============================================================================
 # Exercise 6: Custom Agent Prompt
 # ============================================================================
-CUSTOM_SYSTEM_PROMPT = """You are a SmartHR assistant with access to a searchable knowledge base containing helpdesk tickets, HR policy Q&A, and IT support FAQs.
+CUSTOM_SYSTEM_PROMPT = """You are a SmartHR assistant with access to company policy documents, the company directory, the holiday calendar, and a searchable knowledge base containing helpdesk tickets, HR policy Q&A, and IT support FAQs.
 
 ALWAYS follow these rules:
 1. State which tool you're about to use before calling it
@@ -857,8 +1103,12 @@ ALWAYS follow these rules:
 3. Answer from the retrieved knowledge-base information; do not invent facts or fixes.
 4. If retrieved information does not answer the user's question, begin your final response with the exact marker [NO_ANSWER], then say you do not have enough information.
 5. When you can answer, rate your confidence (High/Medium/Low), cite the available source or ticket ID when useful, and suggest one related topic.
+6. Search every relevant source before using [NO_ANSWER], and use more than one tool when a question spans sources. If policy documents and other records disagree, prefer the policy documents and mention the conflict.
 
 Your tools:
+- SearchCompanyPolicies: First choice for company rules, entitlements, and procedures
+- SearchCompanyDirectory: For finding employees, contact details, managers, and direct reports
+- SearchHolidayCalendar: For holiday dates and upcoming holidays
 - SearchSimilarTickets: For questions about HR policies, IT support FAQs, troubleshooting, and helpdesk records
 - SearchTicketStatus: For looking up a specific helpdesk ticket by ID in the local vector database
 - QueryJiraIssues: For checking a Jira issue key's status or listing Jira issues by requester work email

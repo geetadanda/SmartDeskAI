@@ -165,7 +165,7 @@ if active_page == "Support Chat":
 
         with st.chat_message("assistant"):
             try:
-                with st.spinner("Searching support tickets and preparing an answer..."):
+                with st.spinner("Searching company sources and preparing an answer..."):
                     initialize_agent()
                     result = run_agent(
                         question,

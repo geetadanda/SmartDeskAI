@@ -12,6 +12,8 @@ from typing import Iterator
 
 from argon2 import PasswordHasher
 from argon2.exceptions import InvalidHashError, VerifyMismatchError
+import streamlit as st
+from streamlit.errors import StreamlitSecretNotFoundError
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +27,18 @@ LOGIN_WINDOW_SECONDS = 15 * 60
 
 class AuthConfigurationError(RuntimeError):
     """Raised when authentication has not been configured safely."""
+
+
+def _get_setting(name: str) -> str:
+    """Read deployment settings from environment variables or Streamlit secrets."""
+    value = os.getenv(name, "")
+    if value:
+        return value
+    try:
+        secret = st.secrets.get(name, "")
+    except StreamlitSecretNotFoundError:
+        return ""
+    return str(secret) if secret is not None else ""
 
 
 @contextmanager
@@ -89,8 +103,8 @@ def initialize_auth() -> None:
 def ensure_initial_admin() -> bool:
     """Create the first admin only when both bootstrap environment values exist."""
     initialize_auth()
-    username = os.getenv("SMART_HR_ADMIN_USERNAME", "").strip()
-    password = os.getenv("SMART_HR_ADMIN_PASSWORD", "")
+    username = _get_setting("SMART_HR_ADMIN_USERNAME").strip()
+    password = _get_setting("SMART_HR_ADMIN_PASSWORD")
     with _connect() as connection:
         user_count = connection.execute("SELECT COUNT(*) FROM users").fetchone()[0]
     if user_count:
